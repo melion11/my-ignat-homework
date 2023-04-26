@@ -1,5 +1,6 @@
 .friendMessage {
-
+    max-width: 100%;
+    background-color: #cc0000;
 }
 
 .friendImageAndText {
