@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
 .friendMessage {
     margin-top: 30px;
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     font-style: normal;
     font-size: 16px;
@@ -20,6 +22,7 @@
     }
 
 .friendText {
+
     position: relative;
     padding: 8px 13px;
     width: 430px;
@@ -49,6 +52,7 @@
 }
 
 .friendMessageText {
+    font-family: 'Montserrat', sans-serif;
     white-space: pre-wrap;
     word-break: break-word;
 }
