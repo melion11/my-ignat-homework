@@ -1,20 +1,40 @@
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react'
 import Greeting from './Greeting'
-import { UserType } from './HW3'
+import {pureAddUserCallback, UserType} from './HW3'
+import {Simulate} from "react-dom/test-utils";
+import error = Simulate.error;
+import any = jasmine.any;
 
 type GreetingContainerPropsType = {
-    users: any // need to fix any
-    addUserCallback: any // need to fix any
+    users: UserType[] // need to fix any
+    addUserCallback: (name: string) => void
+        // need to fix any
+
+    // need to fix any
 }
 
-export const pureAddUser = (name: any, setError: any, setName: any, addUserCallback: any) => {
+export const pureAddUser = (name: string, setError: any, setName: any, addUserCallback: (name: string) => void) => {
     // если имя пустое - показать ошибку, иначе - добавить юзера и очистить инпут
+    if (name != '') {
+        addUserCallback(setName(name))
+        setName('')
+    } else {
+        setError(error(any()))
+    }
 }
 
 export const pureOnBlur = (name: any, setError: any) => { // если имя пустое - показать ошибку
+    if (name != '') {
+        return;
+    }
+    setError('Error')
+
 }
 
 export const pureOnEnter = (e: any, addUser: any) => { // если нажата кнопка Enter - добавить
+   if (e.charCode === 13) {
+       addUser();
+   }
 }
 
 // более простой и понятный для новичков
@@ -30,9 +50,9 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
     const [error, setError] = useState<any>('') // need to fix any
 
     const setNameCallback = (e: any) => { // need to fix any
-        setName('some name') // need to fix
+        setName(e.currentTarget.value) // need to fix
 
-        error && setError('')
+        error && setError('Error')
     }
     const addUser = () => {
         pureAddUser(name, setError, setName, addUserCallback)
