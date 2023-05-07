@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { v1 } from 'uuid'
 import s2 from '../../s1-main/App.module.css'
-import GreetingContainer, {pureAddUser} from './GreetingContainer'
+import GreetingContainer from './GreetingContainer'
 
 /*
 * 1 - описать тип UserType
@@ -23,11 +23,10 @@ export type UserType = {
     name: string // need to fix any
 }
 
-export const pureAddUserCallback = (name: string, setUsers: React.Dispatch<React.SetStateAction<UserType[]>>, users: UserType[]) => { // need to fix any
+export const pureAddUserCallback = (name: string, setUsers: (e:UserType[])=>void, users: UserType[]) => { // need to fix any
     const user = { // need to fix
-        _id: v1(),
-        name: name
-
+    _id: v1(),
+    name: name
     }
     setUsers([...users, user])
 }
