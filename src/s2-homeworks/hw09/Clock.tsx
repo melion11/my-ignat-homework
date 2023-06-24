@@ -14,7 +14,7 @@ function Clock() {
         // сохранить ид таймера (https://learn.javascript.ru/settimeout-setinterval#setinterval)
         let id = +setInterval(()=>{
             setDate(new Date())
-        }, 0);
+        }, 1000);
 
         setTimerId(id)
     }
@@ -32,13 +32,13 @@ function Clock() {
         setShow(false)
     }
 
-    let formatter = new Intl.DateTimeFormat('en-US', {
+    let formatter = new Intl.DateTimeFormat('ru-RU', {
         hour: "numeric",
         minute: "numeric",
         second: "numeric"
     })
 
-    let formatterYear = new Intl.DateTimeFormat('en-US', {
+    let formatterYear = new Intl.DateTimeFormat('ru-RU', {
         day: "numeric",
         month: "numeric",
         year: "numeric"
